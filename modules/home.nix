@@ -21,6 +21,10 @@
   programs.home-manager.enable = true;
   programs.nix-index.enable = true;
 
+  home.packages = with pkgs; [
+    glab
+  ];
+
   home.sessionVariables = {
     LC_ALL = "en_GB.UTF-8";
     LC_CTYPE = "en_GB.UTF-8";

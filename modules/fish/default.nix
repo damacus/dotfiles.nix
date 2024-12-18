@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   programs.fish = {
     enable = true;
@@ -6,26 +6,23 @@
 
     shellInit = ''
       set fish_greeting
-     fish_config theme choose "ayu Dark"
-
-      # Ensure Nix paths are first in PATH
-      set -gx fish_user_paths $fish_user_paths
-      fish_add_path -p ~/.nix-profile/bin /nix/var/nix/profiles/default/bin
-      set -a fish_complete_path ~/.nix-profile/share/fish/completions/ ~/.nix-profile/share/fish/vendor_completions.d/
-    '';
-
-    loginShellInit = ''
+      fish_config theme choose "ayu Dark"
     '';
 
     interactiveShellInit = ''
-      ${if pkgs.stdenv.isDarwin then "source /opt/homebrew/opt/asdf/libexec/asdf.fish" else ""}
-      ${if pkgs.stdenv.isDarwin then "source ~/.config/op/plugins.sh" else ""}
-      ${if pkgs.stdenv.isDarwin then "eval (chef shell-init fish)" else ""}
-      ${if pkgs.stdenv.isDarwin then "fish_add_path ~/.codeium/windsurf/bin"  else ""}
+      # Platform specific configurations
+      ${if pkgs.stdenv.isDarwin then ''
+        source /opt/homebrew/opt/asdf/libexec/asdf.fish
+        eval (chef shell-init fish)
+        fish_add_path ~/.codeium/windsurf/bin
+      '' else ""}
 
+	  source ~/.config/op/plugins.sh
+      # Nix paths and completions
       fish_add_path -p ~/.nix-profile/bin /nix/var/nix/profiles/default/bin
       set -a fish_complete_path ~/.nix-profile/share/fish/completions/ ~/.nix-profile/share/fish/vendor_completions.d/
     '';
+
     plugins = [
       {
         name = "autopair";
@@ -42,12 +39,13 @@
     };
 
     shellAbbrs = {
-      # Docker
+      # Container tools
       d = "docker";
       dp = "podman";
       cat = "bat";
       cnpg = "kubectl-cnpg";
-      # Git abbreviations
+
+      # Git operations
       g = "git";
       ggp = "git push origin";
       grhh = "git reset --hard HEAD";
@@ -69,12 +67,18 @@
       gm = "git switch (git main-branch)";
       gwt = "git worktree add -b";
       ug = "update_git";
+
+      # Editor and tools
       vim = "nvim";
-      update_lazy = "nvim --headless '+Lazy! sync' +qa &>/dev/null";
+      update_lazy = "nvim --headless '+Lazy! sync' +qa";
+
+      # Infrastructure tools
       tf = "terraform";
       tfp = "terraform plan";
       tfa = "terraform apply";
       tfi = "terraform init";
+
+      # Kitchen/Chef tools
       kitchen = "chef exec kitchen";
       kl = "chef exec kitchen list";
       kt = "chef exec kitchen test";
