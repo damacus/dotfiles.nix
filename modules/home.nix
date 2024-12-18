@@ -31,6 +31,12 @@
 	jq
 	netcat-gnu
 	gitkraken
+	vscode
+	vault-bin
+	terraform
+	awscli2
+	tabby
+	nvim
   ];
 
   home.sessionVariables = {
