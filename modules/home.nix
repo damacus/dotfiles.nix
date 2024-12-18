@@ -23,6 +23,7 @@
 
   home.packages = with pkgs; [
     glab
+	aws-vault
   ];
 
   home.sessionVariables = {
