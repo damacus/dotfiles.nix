@@ -16,7 +16,7 @@
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         modules = [
           ./modules/home.nix
-		  ./modules/rust.nix
+          ./modules/rust.nix
         ];
       };
 
@@ -29,5 +29,8 @@
         ];
       };
     };
+
+    packages.x86_64-linux.default = home-manager.defaultPackage.x86_64-linux;
+    packages.aarch64-darwin.default = home-manager.defaultPackage.aarch64-darwin;
   };
 }
