@@ -36,7 +36,7 @@
 	terraform
 	awscli2
 	tabby
-	nvim
+	neovim
   ];
 
   home.sessionVariables = {
