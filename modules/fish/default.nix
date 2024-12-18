@@ -17,7 +17,7 @@
         fish_add_path ~/.codeium/windsurf/bin
       '' else ""}
 
-	  source ~/.config/op/plugins.sh
+      source ~/.config/op/plugins.sh
       # Nix paths and completions
       fish_add_path -p ~/.nix-profile/bin /nix/var/nix/profiles/default/bin
       set -a fish_complete_path ~/.nix-profile/share/fish/completions/ ~/.nix-profile/share/fish/vendor_completions.d/
@@ -73,7 +73,7 @@
       update_lazy = "nvim --headless '+Lazy! sync' +qa";
 
       # Infrastructure tools
-      tf = "terraform";
+    #   tf = "terraform";
       tfp = "terraform plan";
       tfa = "terraform apply";
       tfi = "terraform init";
@@ -86,6 +86,9 @@
       kd = "chef exec kitchen destroy";
       kli = "chef exec kitchen login";
       kv = "chef exec kitchen verify";
+
+      # Container tools
+      tf = "aws-vault exec $AWS_PROFILE -- docker compose run --rm terraform";
     };
   };
 }
