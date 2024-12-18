@@ -24,6 +24,13 @@
   home.packages = with pkgs; [
     glab
 	aws-vault
+	asdf
+	zoxide
+	yamllint
+	yq
+	jq
+	netcat-gnu
+	gitkraken
   ];
 
   home.sessionVariables = {
