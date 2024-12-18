@@ -5,9 +5,8 @@
     package = pkgs.fish;
 
     shellInit = ''
-      # disable fish greeting
       set fish_greeting
-      fish_config theme choose "ayu Dark"
+     fish_config theme choose "ayu Dark"
 
       # Ensure Nix paths are first in PATH
       set -gx fish_user_paths $fish_user_paths
@@ -24,9 +23,6 @@
       ${if pkgs.stdenv.isDarwin then "eval (chef shell-init fish)" else ""}
       ${if pkgs.stdenv.isDarwin then "fish_add_path ~/.codeium/windsurf/bin"  else ""}
 
-      fish_add_path -p ~/.nix-profile/bin /nix/var/nix/profiles/default/bin
-      set fish_greeting
-      fish_config theme choose "Catppuccin Frappe"
       fish_add_path -p ~/.nix-profile/bin /nix/var/nix/profiles/default/bin
       set -a fish_complete_path ~/.nix-profile/share/fish/completions/ ~/.nix-profile/share/fish/vendor_completions.d/
     '';
