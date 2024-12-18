@@ -30,7 +30,12 @@
 	yq
 	jq
 	netcat-gnu
-	gitkraken
+    (if pkgs.stdenv.isLinux then
+      (pkgs.gitkraken.override {
+        cacert = "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem";
+      })
+    else
+      gitkraken)
 	vscode
 	vault-bin
 	terraform
