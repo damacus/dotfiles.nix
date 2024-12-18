@@ -1,11 +1,8 @@
 { ... }:
 {
   imports = [
-    ./fish
     ./starship.nix
-    # ./lsd.nix
-    # ./bat.nix
-    # ./direnv.nix
+	./fzf.nix
   ];
 
   programs.zoxide.enable = true;

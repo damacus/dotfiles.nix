@@ -5,6 +5,7 @@
     ./1password
 	./fish
 	./podman.nix
+	./shell.nix
   ];
   home = {
     username = if pkgs.stdenv.isDarwin

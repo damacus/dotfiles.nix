@@ -87,12 +87,5 @@
       kli = "chef exec kitchen login";
       kv = "chef exec kitchen verify";
     };
-
   };
 }
-
-    # shellAliases = {
-
-    #   # Editor
-
-    # };
