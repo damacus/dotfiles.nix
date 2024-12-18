@@ -12,7 +12,6 @@
     interactiveShellInit = ''
       # Platform specific configurations
       ${if pkgs.stdenv.isDarwin then ''
-        source /opt/homebrew/opt/asdf/libexec/asdf.fish
         eval (chef shell-init fish)
         fish_add_path ~/.codeium/windsurf/bin
       '' else ""}

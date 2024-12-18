@@ -5,7 +5,7 @@
     ./1password
 	./fish
 	./podman.nix
-	./shell.nix
+	./starship.nix
   ];
   home = {
     username = if pkgs.stdenv.isDarwin
@@ -20,6 +20,11 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.nix-index.enable = true;
+  programs.zoxide.enable = true;
+#   programs.fzf = {
+#     enable = true;
+#     enableFishIntegration = true;
+#   };
 
   home.packages = with pkgs; [
     glab
@@ -43,6 +48,7 @@
 	tabby
 	neovim
 	htop
+	# fzf
   ];
 
   home.sessionVariables = {
