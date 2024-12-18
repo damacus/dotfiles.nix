@@ -37,6 +37,7 @@
 	awscli2
 	tabby
 	neovim
+	htop
   ];
 
   home.sessionVariables = {
