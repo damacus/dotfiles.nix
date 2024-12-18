@@ -25,7 +25,6 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
           ./modules/home.nix
-          ./modules/fish
         ];
       };
     };
