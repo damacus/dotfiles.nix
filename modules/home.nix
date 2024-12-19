@@ -3,14 +3,14 @@
   imports = [
     ./ssh
     ./1password
-	./fish
-	./podman.nix
-	./starship.nix
+  ./fish
+  ./podman.nix
+  ./starship.nix
   ];
   home = {
     username = if pkgs.stdenv.isDarwin
-	  then "damacus"
-	  else "u.7862791-1";
+    then "damacus"
+    else "u.7862791-1";
     homeDirectory = if pkgs.stdenv.isDarwin
       then "/Users/damacus"
       else "/home/u.7862791-1";
@@ -28,27 +28,27 @@
 
   home.packages = with pkgs; [
     glab
-	aws-vault
-	asdf
-	zoxide
-	yamllint
-	yq
-	jq
-	netcat-gnu
-    (if pkgs.stdenv.isLinux then
-      (pkgs.gitkraken.override {
-        cacert = "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem";
-      })
-    else
-      gitkraken)
-	vscode
-	vault-bin
-	terraform
-	awscli2
-	tabby
-	neovim
-	htop
-	# fzf
+    aws-vault
+    bat
+    asdf
+    zoxide
+    yamllint
+    yq
+    jq
+    netcat-gnu
+      (if pkgs.stdenv.isLinux then
+        (pkgs.gitkraken.override {
+          cacert = "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem";
+        })
+      else
+        gitkraken)
+    vscode
+    vault-bin
+    terraform
+    awscli2
+    tabby
+    neovim
+    htop
   ];
 
   home.sessionVariables = {
