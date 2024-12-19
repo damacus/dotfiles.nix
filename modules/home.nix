@@ -52,8 +52,8 @@
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     # GTK modules (Linux only)
     gtk3
-    packagekit-gtk3
-    libcanberra-gtk3
+    packagekit
+    libcanberra
   ];
 
   home.sessionVariables = {
