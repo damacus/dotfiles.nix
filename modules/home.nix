@@ -36,12 +36,6 @@
     yq
     jq
     netcat-gnu
-      (if pkgs.stdenv.isLinux then
-        (pkgs.gitkraken.override {
-          cacert = "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem";
-        })
-      else
-        gitkraken)
     vscode
     vault-bin
     terraform
@@ -49,11 +43,6 @@
     tabby
     neovim
     htop
-  ] ++ lib.optionals pkgs.stdenv.isLinux [
-    # GTK modules (Linux only)
-    gtk3
-    packagekit
-    libcanberra
   ];
 
   home.sessionVariables = {
