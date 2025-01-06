@@ -3,10 +3,11 @@
   imports = [
     ./ssh
     ./1password
-  ./fish
-  ./podman.nix
-  ./starship.nix
+    ./fish
+    ./podman.nix
+    ./starship.nix
   ];
+
   home = {
     username = if pkgs.stdenv.isDarwin
     then "damacus"
@@ -21,10 +22,6 @@
   programs.home-manager.enable = true;
   programs.nix-index.enable = true;
   programs.zoxide.enable = true;
-#   programs.fzf = {
-#     enable = true;
-#     enableFishIntegration = true;
-#   };
 
   home.packages = with pkgs; [
     glab
@@ -43,7 +40,6 @@
     tabby
     neovim
     htop
-    ghostty
   ];
 
   home.sessionVariables = {
