@@ -43,6 +43,7 @@
     tabby
     neovim
     htop
+    ghostty
   ];
 
   home.sessionVariables = {
