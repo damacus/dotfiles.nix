@@ -2,7 +2,6 @@
 {
   imports = [
     ./ssh
-    ./1password
     ./fish
     ./podman.nix
     ./starship.nix
@@ -27,7 +26,7 @@
     glab
     aws-vault
     bat
-    asdf
+    asdf-vm
     zoxide
     yamllint
     yq

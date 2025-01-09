@@ -20,6 +20,10 @@
       # Nix paths and completions
       fish_add_path -p ~/.nix-profile/bin /nix/var/nix/profiles/default/bin
       set -a fish_complete_path ~/.nix-profile/share/fish/completions/ ~/.nix-profile/share/fish/vendor_completions.d/
+
+      # asdf-vm configuration
+      set -gx ASDF_DIR "${pkgs.asdf-vm}/share/asdf-vm"
+      source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
     '';
 
     plugins = [
