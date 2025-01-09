@@ -39,6 +39,7 @@
     tabby
     neovim
     htop
+	direnv
   ];
 
   home.sessionVariables = {

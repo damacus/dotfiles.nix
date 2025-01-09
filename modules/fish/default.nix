@@ -24,6 +24,9 @@
       # asdf-vm configuration
       set -gx ASDF_DIR "${pkgs.asdf-vm}/share/asdf-vm"
       source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
+
+	  #direnv
+	  direnv hook fish | source
     '';
 
     plugins = [
