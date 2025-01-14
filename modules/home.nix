@@ -40,6 +40,7 @@
     neovim
     htop
 	direnv
+	git-credential-manager
   ];
 
   home.sessionVariables = {
