@@ -1,9 +1,9 @@
 { pkgs, lib, ... }:
 {
   imports = [
-    ./ssh
     ./fish
     ./podman.nix
+    ./ssh
     ./starship.nix
   ];
 
@@ -23,24 +23,25 @@
   programs.zoxide.enable = true;
 
   home.packages = with pkgs; [
-    glab
-    aws-vault
-    bat
     asdf-vm
-    zoxide
+    aws-vault
+    awscli2
+    bat
+    devcontainer
+    direnv
+    git-credential-manager
+    glab
+    htop
+    jq
+    neovim
+    netcat-gnu
+    tabby
+    terraform
+    vault-bin
+    vscode
     yamllint
     yq
-    jq
-    netcat-gnu
-    vscode
-    vault-bin
-    terraform
-    awscli2
-    tabby
-    neovim
-    htop
-	direnv
-	git-credential-manager
+    zoxide
   ];
 
   home.sessionVariables = {

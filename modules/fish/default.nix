@@ -10,23 +10,27 @@
     '';
 
     interactiveShellInit = ''
-      # Platform specific configurations
-      ${if pkgs.stdenv.isDarwin then ''
-        eval (chef shell-init fish)
-        fish_add_path ~/.codeium/windsurf/bin
-      '' else ""}
-
       source ~/.config/op/plugins.sh
       # Nix paths and completions
       fish_add_path -p ~/.nix-profile/bin /nix/var/nix/profiles/default/bin
       set -a fish_complete_path ~/.nix-profile/share/fish/completions/ ~/.nix-profile/share/fish/vendor_completions.d/
 
-      # asdf-vm configuration
-      set -gx ASDF_DIR "${pkgs.asdf-vm}/share/asdf-vm"
-      source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
+      # Direnv
+      direnv hook fish | source
 
-	  #direnv
-	  direnv hook fish | source
+      # ASDF
+      source ${pkgs.asdf-vm}/share/asdf-vm/asdf.fish
+      set -a fish_complete_path ${pkgs.asdf-vm}/share/asdf-vm/completions.fish
+
+	  # Chef
+      if test -x /usr/local/bin/chef
+        eval (chef shell-init fish)
+      end
+
+      # Windsurf
+      if test -f ~/.codeium/windsurf/bin/windsurf
+        fish_add_path ~/.codeium/windsurf/bin
+      end
     '';
 
     plugins = [
@@ -76,10 +80,8 @@
 
       # Editor and tools
       vim = "nvim";
-      update_lazy = "nvim --headless '+Lazy! sync' +qa";
 
       # Infrastructure tools
-    #   tf = "terraform";
       tfp = "terraform plan";
       tfa = "terraform apply";
       tfi = "terraform init";
